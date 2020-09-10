@@ -27,4 +27,10 @@ public class Person {
     public String getName() {
         return name;
     }
+
+    @Override
+    public String toString() {
+        String s = name + " " + sex.getSex() + " " + age;
+        return s;
+    }
 }
