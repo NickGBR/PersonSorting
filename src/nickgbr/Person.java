@@ -30,7 +30,8 @@ public class Person {
 
     @Override
     public String toString() {
-        String s = name + " " + sex.getSex() + " " + age;
+        String s = name + " " + sex.toString() + " " + age;
         return s;
     }
+
 }

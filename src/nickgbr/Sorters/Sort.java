@@ -1,11 +1,10 @@
 package nickgbr.Sorters;
 
 import nickgbr.Person;
-
-import java.util.ArrayList;
+import java.util.List;
 
 public interface Sort {
-    public ArrayList sortByName(ArrayList<Person> people);
-    public ArrayList sortByAge (ArrayList<Person> people);
+    public List sortByName(List<Person> people);
+    public List sortByAge (List<Person> people);
 
 }

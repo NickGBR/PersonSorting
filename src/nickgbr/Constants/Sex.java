@@ -12,7 +12,7 @@ public class Sex {
         this.sex = sex;
     }
 
-    public String getSex(){
+    public String toString(){
         return sex;
     }
 }

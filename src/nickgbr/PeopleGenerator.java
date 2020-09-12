@@ -17,7 +17,7 @@ public class PeopleGenerator {
             } else sex = new Sex(Sex.WOMAN);
 
             String name = null;
-            if (sex.getSex().equals(Sex.MAN)) {
+            if (sex.toString().equals(Sex.MAN)) {
                 name = Names.MEN[(int) (Math.random() * Names.MEN.length)];
             } else name = Names.WOMEN[(int) (Math.random() * Names.WOMEN.length)];
 
