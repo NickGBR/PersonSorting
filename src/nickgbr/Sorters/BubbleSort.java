@@ -19,7 +19,7 @@ public class BubbleSort implements Sort{
             Person person = people.get(i-1);
 
             if(people.get(i-1).getAge()==people.get(i).getAge()&& people.get(i-1).getName().equals(people.get(i).getName())){
-                throw new TheSameNameAgeException("Name and age are the same");
+                throw new TheSameNameAgeException("Name and age are the same.");
             }
 
             int shortWordLength;
@@ -68,7 +68,7 @@ public class BubbleSort implements Sort{
                 i=0;
             }
             else if(people.get(i-1).getAge()==people.get(i).getAge()&& people.get(i-1).getName().equals(people.get(i).getName())){
-                throw new TheSameNameAgeException("Name and age are the same");
+                throw new TheSameNameAgeException("Name and age are the same.");
             }
         }
 

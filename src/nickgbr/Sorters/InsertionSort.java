@@ -28,7 +28,15 @@ public class InsertionSort implements Sort {
                     Person person = people.get(i);
                     people.remove(i);
                     people.add(i + 1, person);
-                } else break;
+                }
+
+                //В случае совбедение имени и возраста выбрасывается исключение.
+                else if (age==age2 && people.get(left).getName().equals(people.get(i).getName())){
+                    throw new TheSameNameAgeException("Name and age are the same.");
+                }
+
+                else break;
+
             }
         }
 
@@ -37,9 +45,39 @@ public class InsertionSort implements Sort {
         return people;
     }
 
+
+
     @Override
     public List sortByName(List<Person> people) throws TheSameNameAgeException {
-        return null;
+
+        for(int left  = 0; left<people.size();left++){
+
+            //Вытаскиеваем значение возраста
+            String leftName = people.get(left).getName();
+
+            //Перемещаеся к эллименту перед вытащенным
+            int i = left-1;
+            for(;i>=0;i--) {
+                String name = people.get(i).getName();
+
+                //Если возраст нового эллимента больше то переставим его правее
+                if (leftName.charAt(0) < name.charAt(0)) {
+                    Person person = people.get(i);
+                    people.remove(i);
+                    people.add(i + 1, person);
+                }
+
+                //В случае совбедение имени и возраста выбрасывается исключение.
+                else if (people.get(left).getAge()==people.get(i).getAge() && people.get(left).getName().equals(people.get(i).getName())){
+                    throw new TheSameNameAgeException("Name and age are the same.");
+                }
+
+                else break;
+
+            }
+        }
+//        menToForwardPositions(people);
+        return people;
     }
 
 
