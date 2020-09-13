@@ -8,26 +8,7 @@ import java.util.List;
 
 public class BubbleSort implements Sort{
 
-    private void menToForwardPositions(List<Person> people){
 
-        int menCounter = 0;
-
-        for(int i = 0; i<people.size();i++){
-            Person person = people.get(i);
-            if (person.getSex().toString().equals(Sex.MAN)){
-                people.remove(person);
-                people.add(0,person);
-                menCounter++;
-            }
-        }
-
-        for( int i = 0;i<menCounter;i++){
-            Person person = people.get(menCounter-1);
-            people.remove(person);
-            people.add(0+i,person);
-
-        }
-    }
 
     @Override
     public List sortByName(List<Person> people) throws TheSameNameAgeException {
@@ -93,5 +74,26 @@ public class BubbleSort implements Sort{
 
         menToForwardPositions(people);
         return people;
+    }
+
+    private void menToForwardPositions(List<Person> people){
+
+        int menCounter = 0;
+
+        for(int i = 0; i<people.size();i++){
+            Person person = people.get(i);
+            if (person.getSex().toString().equals(Sex.MAN)){
+                people.remove(person);
+                people.add(0,person);
+                menCounter++;
+            }
+        }
+
+        for( int i = 0;i<menCounter;i++){
+            Person person = people.get(menCounter-1);
+            people.remove(person);
+            people.add(0+i,person);
+
+        }
     }
 }
