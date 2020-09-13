@@ -2,12 +2,16 @@ package nickgbr;
 
 import nickgbr.Constants.Names;
 import nickgbr.Constants.Sex;
+import nickgbr.Exeptions.IncorrectNumberOfPeopleException;
 
 import java.util.ArrayList;
 
 public class PeopleGenerator {
 
-    public static ArrayList<Person> generate(int numberOfPeople) {
+    public static ArrayList<Person> generate(int numberOfPeople) throws IncorrectNumberOfPeopleException {
+        if(numberOfPeople<=0){
+            throw new IncorrectNumberOfPeopleException("Incorrect number of people.");
+        }
         ArrayList<Person> persons = new ArrayList<Person>();
         for (int i = 0; i < numberOfPeople; i++) {
             Sex sex;

@@ -13,6 +13,8 @@ public class BubbleSort implements Sort{
     @Override
     public List sortByName(List<Person> people) throws TheSameNameAgeException {
 
+        removeNullElements(people);
+
         for(int i = 1;i<people.size();i++){
 
             Person person1 = people.get(i);
@@ -57,6 +59,9 @@ public class BubbleSort implements Sort{
 
     @Override
     public List sortByAge (List<Person> people) throws TheSameNameAgeException {
+
+        removeNullElements(people);
+
         for(int i = 1; i<people.size();i++){
             if(people.get(i-1).getAge()>people.get(i).getAge()){
                 Person personOld = people.get(i-1);
@@ -94,6 +99,23 @@ public class BubbleSort implements Sort{
             people.remove(person);
             people.add(0+i,person);
 
+        }
+    }
+    private void removeNullElliments(List<Person> people){
+        for(int i = 0; i<people.size();i++){
+            if(people.get(i)==null){
+                people.remove(i);
+                i=0;
+            }
+        }
+    }
+
+    private void removeNullElements(List<Person> people){
+        for(int i = 0; i<people.size();i++){
+            if(people.get(i)==null){
+                people.remove(i);
+                i=0;
+            }
         }
     }
 }

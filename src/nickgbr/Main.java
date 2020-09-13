@@ -1,6 +1,7 @@
 package nickgbr;
 
 import nickgbr.Constants.Sex;
+import nickgbr.Exeptions.IncorrectNumberOfPeopleException;
 import nickgbr.Exeptions.TheSameNameAgeException;
 import nickgbr.Sorters.BubbleSort;
 import nickgbr.Sorters.InsertionSort;
@@ -8,24 +9,47 @@ import nickgbr.Sorters.InsertionSort;
 import java.util.ArrayList;
 
 public class Main {
-    public static void main(String[] args) throws TheSameNameAgeException {
+    public static void main(String[] args) throws TheSameNameAgeException, IncorrectNumberOfPeopleException {
 
-        ArrayList<Person> people = new PeopleGenerator().generate(100);
-        System.out.println(people);
-//        Person Nick = new Person(26, new Sex(Sex.MAN),"Nick");
-//        Person Nick1 = new Person(26, new Sex(Sex.MAN),"Nicu");
-//        Person Nick2 = new Person(26, new Sex(Sex.MAN),"Nick3");
+        ArrayList<Person> originalList = new PeopleGenerator().generate(50);
+        ArrayList<Person> testedList = originalList;
 
-//        people.add(Nick);
-//        people.add(Nick1);
-//        people.add(Nick1);
+        long startTime = System.currentTimeMillis();
+        new BubbleSort().sortByName(testedList);
+        long endTime = System.currentTimeMillis();
+        System.out.println("*** Bubble sort by name ***");
+        System.out.println("Original list = " + originalList );
+        System.out.println("Sorted list = " + testedList);
+        System.out.println("Execution time = " + (endTime-startTime) + "ms");
+        testedList = originalList;
 
-        //new BubbleSort().sortByAge(people);
-        new InsertionSort().sortByName(people);
-        //new InsertionSort().sortByAge(people);
+        System.out.println("");
+        startTime = System.currentTimeMillis();
+        new BubbleSort().sortByAge(testedList);
+        endTime = System.currentTimeMillis();
+        System.out.println("*** Bubble sort by age ***");
+        System.out.println("Original list = " + originalList );
+        System.out.println("Sorted list = " + testedList);
+        System.out.println("Execution time = " + (endTime-startTime) + "ms");
+        testedList = originalList;
 
-        for(Person person:people) {
-            System.out.println(person.getName());
-        }
+        System.out.println("");
+        startTime = System.currentTimeMillis();
+        new InsertionSort().sortByAge(testedList);
+        endTime = System.currentTimeMillis();
+        System.out.println("*** Insertion sort by name ***");
+        System.out.println("Original list = " + originalList );
+        System.out.println("Sorted list = " + testedList);
+        System.out.println("Execution time = " + (endTime-startTime) + "ms");
+        testedList = originalList;
+
+        System.out.println("");
+        startTime = System.currentTimeMillis();
+        new InsertionSort().sortByAge(testedList);
+        endTime = System.currentTimeMillis();
+        System.out.println("*** Insertion sort by age ***");
+        System.out.println("Original list = " + originalList );
+        System.out.println("Sorted list = " + testedList);
+        System.out.println("Execution time = " + (endTime-startTime) + "ms");
     }
 }
