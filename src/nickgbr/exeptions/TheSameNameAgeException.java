@@ -1,4 +1,4 @@
-package nickgbr.Exeptions;
+package nickgbr.exeptions;
 
 public class TheSameNameAgeException extends Exception {
     public TheSameNameAgeException(String message) {

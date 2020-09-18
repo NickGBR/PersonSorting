@@ -1,10 +1,10 @@
-package nickgbr.Sorters;
+package nickgbr.sorters;
 
-import nickgbr.Constants.Sex;
-import nickgbr.Exeptions.TheSameNameAgeException;
+import nickgbr.constants.Gender;
+import nickgbr.constants.Sex;
+import nickgbr.exeptions.TheSameNameAgeException;
 import nickgbr.Person;
 
-import java.util.LinkedList;
 import java.util.List;
 
 public class InsertionSort implements Sort {
@@ -12,14 +12,14 @@ public class InsertionSort implements Sort {
     @Override
     public List sortByAge(List<Person> people) throws TheSameNameAgeException {
         removeNullElements(people);
-        for(int left  = 0; left<people.size();left++){
+        for(int left  = 0; left<people.size(); left++){
 
             //Вытаскиеваем значение возраста
             int age = people.get(left).getAge();
 
             //Перемещаеся к эллименту перед вытащенным
-            int i = left-1;
-            for(;i>=0;i--) {
+            int i = left - 1;
+            for(;i >= 0; i--) {
 
                 int age2 = people.get(i).getAge();
 
@@ -50,13 +50,13 @@ public class InsertionSort implements Sort {
     @Override
     public List sortByName(List<Person> people) throws TheSameNameAgeException {
         removeNullElements(people);
-        for(int left  = 0; left<people.size();left++){
+        for(int left  = 0; left<people.size(); left++){
 
             int charCounter = 0;
             String leftName = people.get(left).getName();
 
             int i = left-1;
-            for(;i>=0;i--) {
+            for(; i>=0; i--) {
 
                 String name = people.get(i).getName();
 
@@ -83,7 +83,7 @@ public class InsertionSort implements Sort {
                 }
 
                 //Если буквы одинаковые то проверяем следующую
-                else if(leftNameChar == nameChar && charCounter!=nameLength-1){
+                else if(leftNameChar == nameChar && charCounter != nameLength - 1){
                     i++;
                     charCounter++;
                 }
@@ -103,7 +103,7 @@ public class InsertionSort implements Sort {
 
         for(int i = 0; i<people.size();i++){
             Person person = people.get(i);
-            if (person.getSex().toString().equals(Sex.MAN)){
+            if (person.getSex().toString().equals(Gender.MAN.toString())){
                 people.remove(person);
                 people.add(0,person);
                 menCounter++;
@@ -119,10 +119,10 @@ public class InsertionSort implements Sort {
     }
 
     private void removeNullElements(List<Person> people){
-        for(int i = 0; i<people.size();i++){
-            if(people.get(i)==null){
+        for(int i = 0; i < people.size(); i++){
+            if(people.get(i) == null){
                 people.remove(i);
-                i=0;
+                i = 0;
             }
         }
     }

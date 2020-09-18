@@ -1,6 +1,6 @@
-package nickgbr.Sorters;
+package nickgbr.sorters;
 
-import nickgbr.Exeptions.TheSameNameAgeException;
+import nickgbr.exeptions.TheSameNameAgeException;
 import nickgbr.Person;
 import java.util.List;
 

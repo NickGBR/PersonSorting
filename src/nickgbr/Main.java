@@ -1,17 +1,16 @@
 package nickgbr;
 
-import nickgbr.Constants.Sex;
-import nickgbr.Exeptions.IncorrectNumberOfPeopleException;
-import nickgbr.Exeptions.TheSameNameAgeException;
-import nickgbr.Sorters.BubbleSort;
-import nickgbr.Sorters.InsertionSort;
+import nickgbr.exeptions.IncorrectNumberOfPeopleException;
+import nickgbr.exeptions.TheSameNameAgeException;
+import nickgbr.sorters.BubbleSort;
+import nickgbr.sorters.InsertionSort;
 
 import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws TheSameNameAgeException, IncorrectNumberOfPeopleException {
 
-        ArrayList<Person> originalList = new PeopleGenerator().generate(50);
+        ArrayList<Person> originalList = new PeopleGenerator().generate(100);
         ArrayList<Person> testedList = originalList;
 
         long startTime = System.currentTimeMillis();

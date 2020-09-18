@@ -1,7 +1,8 @@
 
-package nickgbr.Sorters;
-import nickgbr.Constants.Sex;
-import nickgbr.Exeptions.TheSameNameAgeException;
+package nickgbr.sorters;
+import nickgbr.constants.Gender;
+import nickgbr.constants.Sex;
+import nickgbr.exeptions.TheSameNameAgeException;
 import nickgbr.Person;
 
 import java.util.List;
@@ -62,17 +63,17 @@ public class BubbleSort implements Sort{
 
         removeNullElements(people);
 
-        for(int i = 1; i<people.size();i++){
-            if(people.get(i-1).getAge()>people.get(i).getAge()){
-                Person personOld = people.get(i-1);
+        for(int i = 1; i < people.size(); i++){
+            if(people.get(i - 1).getAge()>people.get(i).getAge()){
+                Person personOld = people.get(i - 1);
                 Person personYang = people.get(i);
                 people.remove(personOld);
                 people.remove(personYang);
-                people.add(i-1,personYang);
-                people.add(i,personOld);
-                i=0;
+                people.add(i - 1,personYang);
+                people.add(i, personOld);
+                i = 0;
             }
-            else if(people.get(i-1).getAge()==people.get(i).getAge()&& people.get(i-1).getName().equals(people.get(i).getName())){
+            else if(people.get(i - 1).getAge()==people.get(i).getAge()&& people.get(i - 1).getName().equals(people.get(i).getName())){
                 throw new TheSameNameAgeException("Name and age are the same.");
             }
         }
@@ -85,28 +86,20 @@ public class BubbleSort implements Sort{
 
         int menCounter = 0;
 
-        for(int i = 0; i<people.size();i++){
+        for(int i = 0; i<people.size(); i++){
             Person person = people.get(i);
-            if (person.getSex().toString().equals(Sex.MAN)){
+            if (person.getSex().toString().equals(Gender.MAN.toString())){
                 people.remove(person);
-                people.add(0,person);
+                people.add(0, person);
                 menCounter++;
             }
         }
 
-        for( int i = 0;i<menCounter;i++){
-            Person person = people.get(menCounter-1);
+        for( int i = 0; i < menCounter; i++){
+            Person person = people.get(menCounter - 1);
             people.remove(person);
-            people.add(0+i,person);
+            people.add(0 + i,person);
 
-        }
-    }
-    private void removeNullElliments(List<Person> people){
-        for(int i = 0; i<people.size();i++){
-            if(people.get(i)==null){
-                people.remove(i);
-                i=0;
-            }
         }
     }
 

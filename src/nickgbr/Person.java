@@ -1,6 +1,6 @@
 package nickgbr;
 
-import nickgbr.Constants.Sex;
+import nickgbr.constants.Sex;
 
 public class Person {
 

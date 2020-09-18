@@ -1,8 +1,9 @@
 package nickgbr;
 
-import nickgbr.Constants.Names;
-import nickgbr.Constants.Sex;
-import nickgbr.Exeptions.IncorrectNumberOfPeopleException;
+import nickgbr.constants.Gender;
+import nickgbr.constants.Names;
+import nickgbr.constants.Sex;
+import nickgbr.exeptions.IncorrectNumberOfPeopleException;
 
 import java.util.ArrayList;
 
@@ -17,11 +18,11 @@ public class PeopleGenerator {
             Sex sex;
 
             if (Math.random() < 0.5) {
-                sex = new Sex(Sex.MAN);
-            } else sex = new Sex(Sex.WOMAN);
+                sex = new Sex(Gender.MAN);
+            } else sex = new Sex(Gender.WOMAN);
 
             String name = null;
-            if (sex.toString().equals(Sex.MAN)) {
+            if (sex.toString().equals(Gender.MAN.toString())) {
                 name = Names.MEN[(int) (Math.random() * Names.MEN.length)];
             } else name = Names.WOMEN[(int) (Math.random() * Names.WOMEN.length)];
 
