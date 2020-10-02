@@ -1,7 +1,6 @@
 package nickgbr.sorters;
 
 import nickgbr.constants.Gender;
-import nickgbr.constants.Sex;
 import nickgbr.exeptions.TheSameNameAgeException;
 import nickgbr.Person;
 
@@ -12,14 +11,14 @@ public class InsertionSort implements Sort {
     @Override
     public List sortByAge(List<Person> people) throws TheSameNameAgeException {
         removeNullElements(people);
-        for(int left  = 0; left<people.size(); left++){
+        for (int left = 0; left < people.size(); left++) {
 
             //Вытаскиеваем значение возраста
             int age = people.get(left).getAge();
 
-            //Перемещаеся к эллименту перед вытащенным
+            //Перемещаеся к эллименту перед полученным
             int i = left - 1;
-            for(;i >= 0; i--) {
+            for (; i >= 0; i--) {
 
                 int age2 = people.get(i).getAge();
 
@@ -31,11 +30,10 @@ public class InsertionSort implements Sort {
                 }
 
                 //В случае совбедение имени и возраста выбрасывается исключение.
-                else if (age==age2 && people.get(left).getName().equals(people.get(i).getName())){
+                else if (age == age2 &&
+                        people.get(left).getName().equals(people.get(i).getName())) {
                     throw new TheSameNameAgeException("Name and age are the same.");
-                }
-
-                else break;
+                } else break;
 
             }
         }
@@ -46,27 +44,25 @@ public class InsertionSort implements Sort {
     }
 
 
-
     @Override
     public List sortByName(List<Person> people) throws TheSameNameAgeException {
         removeNullElements(people);
-        for(int left  = 0; left<people.size(); left++){
+        for (int left = 0; left < people.size(); left++) {
 
             int charCounter = 0;
             String leftName = people.get(left).getName();
 
-            int i = left-1;
-            for(; i>=0; i--) {
+            int i = left - 1;
+            for (; i >= 0; i--) {
 
                 String name = people.get(i).getName();
 
                 //Находим длину самого короткого имени
                 int nameLength = name.length();
-                if(leftName.length()<nameLength){
+                if (leftName.length() < nameLength) {
                     nameLength = leftName.length();
                 }
 
-                System.out.println(name);
                 char leftNameChar = leftName.charAt(charCounter);
                 char nameChar = name.charAt(charCounter);
 
@@ -78,17 +74,16 @@ public class InsertionSort implements Sort {
                 }
 
                 //В случае совбедение имени и возраста выбрасывается исключение.
-                else if (people.get(left).getAge()==people.get(i).getAge() && people.get(left).getName().equals(people.get(i).getName())){
+                else if (people.get(left).getAge() == people.get(i).getAge() &&
+                        people.get(left).getName().equals(people.get(i).getName())) {
                     throw new TheSameNameAgeException("Name and age are the same.");
                 }
 
                 //Если буквы одинаковые то проверяем следующую
-                else if(leftNameChar == nameChar && charCounter != nameLength - 1){
+                else if (leftNameChar == nameChar && charCounter != nameLength - 1) {
                     i++;
                     charCounter++;
-                }
-
-                else break;
+                } else break;
 
             }
         }
@@ -97,30 +92,30 @@ public class InsertionSort implements Sort {
     }
 
 
-    private void menToForwardPositions(List<Person> people){
+    private void menToForwardPositions(List<Person> people) {
 
         int menCounter = 0;
 
-        for(int i = 0; i<people.size();i++){
+        for (int i = 0; i < people.size(); i++) {
             Person person = people.get(i);
-            if (person.getSex().toString().equals(Gender.MAN.toString())){
+            if (person.getSex().toString().equals(Gender.MAN.toString())) {
                 people.remove(person);
-                people.add(0,person);
+                people.add(0, person);
                 menCounter++;
             }
         }
 
-        for( int i = 0;i<menCounter;i++){
-            Person person = people.get(menCounter-1);
+        for (int i = 0; i < menCounter; i++) {
+            Person person = people.get(menCounter - 1);
             people.remove(person);
-            people.add(0+i,person);
+            people.add(0 + i, person);
 
         }
     }
 
-    private void removeNullElements(List<Person> people){
-        for(int i = 0; i < people.size(); i++){
-            if(people.get(i) == null){
+    private void removeNullElements(List<Person> people) {
+        for (int i = 0; i < people.size(); i++) {
+            if (people.get(i) == null) {
                 people.remove(i);
                 i = 0;
             }

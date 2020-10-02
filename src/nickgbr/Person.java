@@ -1,18 +1,19 @@
 package nickgbr;
 
-import nickgbr.constants.Sex;
+import nickgbr.constants.Gender;
 
 public class Person {
 
     private int age;
-    private Sex sex;
+    private Gender gender;
     private String name;
 
-    private Person(){}
+    private Person() {
+    }
 
-    public Person(int age, Sex sex, String name){
+    public Person(int age, Gender gender, String name) {
         this.age = age;
-        this.sex = sex;
+        this.gender = gender;
         this.name = name;
     }
 
@@ -20,8 +21,8 @@ public class Person {
         return age;
     }
 
-    public Sex getSex() {
-        return sex;
+    public Gender getSex() {
+        return gender;
     }
 
     public String getName() {
@@ -30,7 +31,7 @@ public class Person {
 
     @Override
     public String toString() {
-        String s = name + " " + sex.toString() + " " + age;
+        String s = name + " " + gender.toString() + " " + age;
         return s;
     }
 

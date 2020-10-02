@@ -10,45 +10,40 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) throws TheSameNameAgeException, IncorrectNumberOfPeopleException {
 
-        ArrayList<Person> originalList = new PeopleGenerator().generate(100);
-        ArrayList<Person> testedList = originalList;
+        ArrayList<Person> originalList = PeopleGenerator.generate(10);
+        ArrayList<Person> testedList = new ArrayList<>(originalList);
 
         long startTime = System.currentTimeMillis();
         new BubbleSort().sortByName(testedList);
         long endTime = System.currentTimeMillis();
         System.out.println("*** Bubble sort by name ***");
-        System.out.println("Original list = " + originalList );
-        System.out.println("Sorted list = " + testedList);
-        System.out.println("Execution time = " + (endTime-startTime) + "ms");
-        testedList = originalList;
+        getStat(originalList, testedList, startTime, endTime);
+        testedList = new ArrayList<>(originalList);
 
-        System.out.println("");
         startTime = System.currentTimeMillis();
         new BubbleSort().sortByAge(testedList);
         endTime = System.currentTimeMillis();
         System.out.println("*** Bubble sort by age ***");
-        System.out.println("Original list = " + originalList );
-        System.out.println("Sorted list = " + testedList);
-        System.out.println("Execution time = " + (endTime-startTime) + "ms");
-        testedList = originalList;
+        getStat(originalList, testedList, startTime, endTime);
+        testedList = new ArrayList<>(originalList);
 
-        System.out.println("");
         startTime = System.currentTimeMillis();
-        new InsertionSort().sortByAge(testedList);
+        new InsertionSort().sortByName(testedList);
         endTime = System.currentTimeMillis();
         System.out.println("*** Insertion sort by name ***");
-        System.out.println("Original list = " + originalList );
-        System.out.println("Sorted list = " + testedList);
-        System.out.println("Execution time = " + (endTime-startTime) + "ms");
-        testedList = originalList;
+        getStat(originalList, testedList, startTime, endTime);
+        testedList = new ArrayList<>(originalList);
 
-        System.out.println("");
         startTime = System.currentTimeMillis();
         new InsertionSort().sortByAge(testedList);
         endTime = System.currentTimeMillis();
         System.out.println("*** Insertion sort by age ***");
-        System.out.println("Original list = " + originalList );
+        getStat(originalList, testedList, startTime, endTime);
+    }
+
+    private static void getStat(ArrayList<Person> originalList, ArrayList<Person> testedList, long startTime, long endTime) {
+        System.out.println("Original list = " + originalList);
         System.out.println("Sorted list = " + testedList);
-        System.out.println("Execution time = " + (endTime-startTime) + "ms");
+        System.out.println("Execution time = " + (endTime - startTime) + "ms\n");
     }
 }
